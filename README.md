@@ -1,2 +1,2 @@
 # bearded-octo-ironman
-A repository with exercises and attendees solutions
+W repozytorium znajdują się zadania oraz rozwiązania uczestników pierwszej edycji PyThingy.
