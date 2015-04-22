@@ -1,6 +1,15 @@
 import pickle
 import os.path
 
+
+def phonebook_pickle(func):
+    global phonebook
+    def wraper(*args, **kwargs):
+        with open('phonebook_data.pkl', 'wb') as database:
+            func(*args, **kwargs)
+            pickle.dump(phonebook, database)
+    return wraper
+
 def init():
     global phonebook
     if not os.path.exists('phonebook_data.pkl'):
@@ -12,18 +21,16 @@ def init():
         database = open('phonebook_data.pkl', 'rb')
         phonebook = pickle.load(database)
 
+@phonebook_pickle
 def add_number(name,lastname,number):
     global phonebook
-    with open('phonebook_data.pkl', 'wb') as database:
-        phonebook.setdefault(lastname, {})
-        phonebook[lastname].setdefault(name,[]).append(number)
-        pickle.dump(phonebook, database)
-    
+    phonebook.setdefault(lastname, {})
+    phonebook[lastname].setdefault(name,[]).append(number)
+
+@phonebook_pickle    
 def clean():
     global phonebook
-    with open('phonebook_data.pkl', 'wb') as database:
-        phonebook.clear()
-        pickle.dump(phonebook, database)
+    phonebook.clear()
 
 def search(lastname):
     global phonebook
@@ -35,8 +42,8 @@ def search(lastname):
                 #counter +=1
         #yield counter
     except KeyError:
-        print("There is no such lastname as %s, maybe add him first?"% lastname)
-        raise
+        return("There is no such lastname as %s, maybe add him first?"% lastname)
+        raise StopIteration("There is no such lastname as %s, maybe add him first?"% lastname)
 
 
          

@@ -24,8 +24,8 @@ def search(lastname):
                 #counter +=1
         #yield counter
     except KeyError:
-        print("There is no such lastname as %s, maybe add him first?"% lastname)
-        raise
+        return("There is no such lastname as %s, maybe add him first?"% lastname)
+        raise StopIteration("There is no such lastname as %s, maybe add him first?"% lastname)
          
 if __name__ == '__main__':
     init()
