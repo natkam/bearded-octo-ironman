@@ -11,29 +11,30 @@ def bubble_sort(tosort, how_to_sort = 'asc'):
     >>> bubble_sort([7, 7, 7])
     [7, 7, 7]
     '''
-    tosort = list(tosort)
-    issorted, list_len = 0, len(tosort)
+
+    issorted, no = False, len(tosort)
     if how_to_sort == 'asc':
-        while issorted < list_len:
-            issorted = 1
-            for item in range(1, list_len):
+        while not issorted:
+            issorted = True
+            for item in range(1, no):
                 if tosort[item-1] > tosort[item]:
                     tosort[item-1], tosort[item] = tosort[item], tosort[item-1]
-                else:
-                    issorted += 1
+                    issorted = False
+            no -= 1
         return tosort
     elif how_to_sort == 'desc':
-        while issorted < list_len:
-            issorted = 1
-            for item in range(1, list_len):
+        while not issorted:
+            issorted = True
+            for item in range(1, no):
                 if tosort[item-1] < tosort[item]:
                     tosort[item-1], tosort[item] = tosort[item], tosort[item-1]
-                else:
-                    issorted += 1
+                    issorted = False
+            no -= 1
         return tosort
     else:
-        print("Error, how_to_sort can be one 'asc' or 'desc'")
+        print("Error, how_to_sort should be 'asc' or 'desc'")
         return []
+
 
 if __name__ == "__main__":
     import doctest
