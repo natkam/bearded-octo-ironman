@@ -12,24 +12,24 @@ def bubble_sort(tosort, how_to_sort = 'asc'):
     [7, 7, 7]
     '''
 
-    issorted, no = False, len(tosort)
+    issorted, list_len = False, len(tosort)
     if how_to_sort == 'asc':
         while not issorted:
             issorted = True
-            for item in range(1, no):
+            for item in range(1, list_len):
                 if tosort[item-1] > tosort[item]:
                     tosort[item-1], tosort[item] = tosort[item], tosort[item-1]
                     issorted = False
-            no -= 1
+            list_len -= 1
         return tosort
     elif how_to_sort == 'desc':
         while not issorted:
             issorted = True
-            for item in range(1, no):
+            for item in range(1, list_len):
                 if tosort[item-1] < tosort[item]:
                     tosort[item-1], tosort[item] = tosort[item], tosort[item-1]
                     issorted = False
-            no -= 1
+            list_len -= 1
         return tosort
     else:
         print("Error, how_to_sort should be 'asc' or 'desc'")
