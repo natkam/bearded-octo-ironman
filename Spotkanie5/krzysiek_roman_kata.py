@@ -13,7 +13,9 @@ CONVERSIONS = {
     400:'CD',
     500:'D',
     900:'CM',
-    1000:'M'
+    1000:'M',
+    2000:'MM',
+    3000:'MMM',
 }
 
 def conversion_factors_for(arabic_number):
@@ -47,6 +49,7 @@ NUMBERS = [
     (900, 'CM'),
     (1000, 'M'),
     (1764, 'MDCCLXIV'),
+    (3497, 'MMMCDXCVII'),
 ]
 
 @pytest.mark.parametrize('input, expected', NUMBERS)
